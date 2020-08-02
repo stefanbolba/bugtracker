@@ -11,8 +11,7 @@ export const hideMenu = (menu) => {
 };
 
 export const removeComment = (el) => {
-  el.remove();
-  console.log(comment.commentNumber.textContent);
+  el.remove();  
   comment.commentNumber.textContent = `(${
     comment.commentNumber.textContent.split('')[1] * 1 - 1
   })`;

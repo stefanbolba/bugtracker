@@ -93,7 +93,7 @@ issuesElm.optionsBtn.forEach((el) =>
       issuesElm.modalLimitItemsList.forEach((el) => {
         if (el.checked) limitValue = el.id;
       });
-      console.log(fieldsList);
+      
       //Save the options
       if (!state.modalOptions) state.modalOptions = new Settings();
       state.modalOptions.persistData(fieldsList, limitValue);

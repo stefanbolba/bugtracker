@@ -5,7 +5,7 @@ export const getIssues = async (state) => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:8080/api/v1/issues',
+      url: '/api/v1/issues',
     }).then((doc) => {
       state.issues = doc.data.data.data;
       if (doc.data.status === 'succes') {
@@ -21,7 +21,7 @@ export const getCategories = async (state) => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:8080/api/v1/category',
+      url: '/api/v1/category',
     }).then((doc) => {      
       state.categories = doc.data.data.data;
     });

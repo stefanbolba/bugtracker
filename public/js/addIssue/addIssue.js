@@ -38,7 +38,7 @@ modal.categoryAddBtn.addEventListener('click', async (e) => {
     modal.categoryInput.value = '';
     modal.category.style = 'display:none';
   } catch (err) {
-    console.log(err);
+    
   }
 });
 modal.versionAddBtn.addEventListener('click', () => {

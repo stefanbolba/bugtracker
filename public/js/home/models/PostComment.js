@@ -5,7 +5,7 @@ export const postComment = async (comment, issue) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/v1/comments',
+      url: '/api/v1/comments',
       data: {
         comment,
         issue,

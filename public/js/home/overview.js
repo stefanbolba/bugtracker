@@ -13,8 +13,7 @@ window.addEventListener('load', async (el) => {
   try {
     //1) Import
     await getIssues(state);
-    await getCategories(state);
-    console.log(state);
+    await getCategories(state);    
 
     //2) Create the timeline
     TimelineView.displayTimeline(state.issues);

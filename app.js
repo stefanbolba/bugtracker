@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const issueRouter = require('./routes/issueRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -40,6 +41,9 @@ app.use(cookieParser());
 app.use(mongoSanitize());
 // Data sanitization agais XSS
 app.use(xss());
+
+//Compression midleware
+app.use(compression);
 
 //ROUTES
 app.use('/', viewRouter);

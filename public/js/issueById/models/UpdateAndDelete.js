@@ -5,12 +5,12 @@ export const updateComment = async (id, comment) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://localhost:8080/api/v1/comments/${id}`,
+      url: `/api/v1/comments/${id}`,
       data: {
         comment,
       },
     });
-    console.log(comment);
+    
     if (res.data.status === 'succes') {
       showAlert('succes', 'Comment has been updated!');
     }
@@ -24,7 +24,7 @@ export const deleteComment = async (id) => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://localhost:8080/api/v1/comments/${id}`,
+      url: `/api/v1/comments/${id}`,
     });
 
     if (res.status === 204) {
@@ -42,7 +42,7 @@ export const updateIssue = async (obj) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://localhost:8080/api/v1/issues/${id}`,
+      url: `/api/v1/issues/${id}`,
       data: obj,
     });
     if (res.data.status === 'succes') {
@@ -59,7 +59,7 @@ export const addComment = async (comment) => {
     const issue = location.pathname.split('/')[2];
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/v1/comments',
+      url: '/api/v1/comments',
       data: {
         issue,
         comment,
@@ -68,7 +68,7 @@ export const addComment = async (comment) => {
     if (res.data.status === 'succes') {
       showAlert('succes', 'Comment has been created!');
     }
-    console.log(res.data);
+    
     return res.data;
   } catch (err) {
     showAlert('error', err.response.data.message);

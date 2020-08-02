@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js ",
-    "web": "webpack --mode development",
+    "debug": "ndb server.js",
+    "webpack:dev": "webpack --mode development",
+    "webpack:prod": "webpack --mode production",
     "start:prod": "NODE_ENV=production nodemon server.js"
   },
   "author": "stefan bolba",
@@ -34,6 +36,7 @@
     "@babel/polyfill": "^7.10.4",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -48,6 +51,7 @@
     "mongoose": "^5.9.19",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "ndb": "^1.1.5",
     "nodemailer": "^6.4.10",
     "pug": "^3.0.0",
     "sharp": "^0.25.4",

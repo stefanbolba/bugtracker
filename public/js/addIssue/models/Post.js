@@ -6,7 +6,7 @@ export const addIssue = async (...el) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/v1/issues',
+      url: '/api/v1/issues',
       data: {
         name: el[0],
         description: el[1],
@@ -32,7 +32,7 @@ export const addCategory = async (name) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/v1/category',
+      url: '/api/v1/category',
       data: {
         name,
       },
@@ -49,7 +49,7 @@ export const addVersion = async (name) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8080/api/v1/version',
+      url: '/api/v1/version',
       data: {
         name,
       },

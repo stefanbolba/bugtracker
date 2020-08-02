@@ -55,7 +55,7 @@ export const modalQuery = (fieldsList, limitValue) => {
   let fields = `fields=${fieldsList.toString()}`;
   let limit = `limit=${limitValue}`;
   if (query.length < 1 || query[0] === '') query = [];
-  console.log(fields);
+  
 
   if (!query[0]) {
     query.push(fields);

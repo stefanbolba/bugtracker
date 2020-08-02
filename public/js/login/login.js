@@ -29,10 +29,9 @@ form.submitBtnSignup.addEventListener('click', (e) => {
 });
 
 form.resetBtn.addEventListener('click', (e) => {
-  e.preventDefault()    
-  console.log(email)
+  e.preventDefault();
   forgotPassword(email);
-})
+});
 
 form.showSignupBtn.addEventListener('click', () => {
   form.loginForm.style = 'display: none';
@@ -41,7 +40,6 @@ form.showSignupBtn.addEventListener('click', () => {
 
 form.showLoginBtn.forEach((el) => {
   el.addEventListener('click', () => {
-    console.log('test')
     form.loginForm.style = 'display: flex';
     form.signupForm.style = 'display: none';
     form.resetForm.style = 'display: none';
