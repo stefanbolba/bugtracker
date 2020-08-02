@@ -1,0 +1,155 @@
+extends base
+
+mixin options(el)
+    option(value=`${el.name}`) #{el.name}
+
+block head
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+    link(rel='stylesheet' href='/css/addIssue.css')
+    title #{title}
+
+block content    
+    .content
+        .preview__container(style='display: none')
+            .content__project
+                a(href='#')
+                    img.project__icon(src='./img/office.jpeg' alt='project-logo')
+                h2.project__name(style='font-size: 20px;') Bug Traker
+            .page__name
+                h3 Add Issue
+            .button__list
+                button.back__btn(type='' submit='') Back
+                button.issue__add(type='submit') Add
+            .preview__name
+                h3.preview__name--name Name
+            .preview__content
+                .user__info
+                    span.user__icon
+                        img
+                    span.user__name
+                        span.user__name--text #{user.name}
+                .preview__description
+                    p.preview__description--value Description
+                .preview__properites
+                    .preview__type
+                        .status__container
+                            span Type
+                        span.status__container--type type
+                    .status__preview
+                        .status__container
+                            span Status
+                        span.open Open
+                    .preview__priority
+                        .status__container
+                            span Priority
+                        span.status__container--priority Priority
+                    .preview__duedate
+                        .status__container
+                            span Due Date
+                        span.status__container--duedate Due Date
+                    .preview__asignee
+                        .status__container
+                            span Asignee
+                        span.status__container--asignee Asignee
+                    .preview__category
+                        .status__container
+                            span Category
+                        span.status__container--category Category
+                    .preview__version
+                        .status__container
+                            span Version
+                        span.status__container--version Version
+            .button__list
+                button.back__btn(type='' submit='') Back
+                button.issue__add(type='submit') Add
+            footer.issue__footer
+        .issue__container
+            .content__project
+                a(href='#')
+                    img.project__icon(src='./img/office.jpeg' alt='project-logo')
+                h2.project__name(style='font-size: 20px;') Bug Traker
+            .page__name
+                h3 Add Issue
+            .button__list
+                button.issue__preview(type='submit') Preview
+                button.issue__add(type='submit') Add
+            .issue__type
+                select.issue__type--select
+                    option(value='task') Task
+                    option(value='bug') Bug
+                    option(value='request') Request
+                    option(value='other') Other
+            .issue__subject
+                input.issue__subject--input(type='text' placeholder='Subject...' size='120' maxlength='240' required='')
+            .issue__description
+                textarea.issue__description--input(placeholder='Description...' required='')
+            .issue__properties
+                .issue__status
+                    .status__container
+                        span Status
+                    span.issue__status--prt Open
+                .issue__priority
+                    .status__container
+                        span Priority
+                    select.issue__priority--select
+                        option(value='low') Low
+                        option(value='medium') Medium
+                        option(value='high') High
+                .issue__date
+                    .status__container
+                        span Due Date
+                    input.issue__duedate(type='date' pattern='\d{4}-\d{2}-\d{2}')
+                .issue__asignee
+                    .status__container
+                        span Assignee
+                    select.asignee__select
+                        option(value="undefined")
+                        each el in users
+                            +options(el)
+                    button.asignee__modal--btn(data-user=`${user.name}`) Assign to Myself
+
+                .issue__category
+                    .status__container
+                        span Category
+                    select.category__select
+                        option(value="undefined")
+                        each el in category
+                            +options(el)
+                    button.category__modal--btn &plus;
+
+                .issue__version
+                    .status__container
+                        span Version
+                    select.version__select
+                        option(value="undefined")
+                        each el in version
+                            +options(el)
+                    button.version__modal--btn &plus;
+
+            .button__list
+                button.issue__preview(type='submit') Preview
+                button.issue__add(type='submit') Add
+            footer.issue__footer
+    .modal__category(style='display: none;')
+        .modal__category--options
+            .modal__category--header
+                h2 Add Category
+                span.modal__category--close ×
+            .modal__category--body
+                input.modal__category--input(type='text' maxlength='30')
+                button.modal__category--button Add
+    .modal__version(style='display: none')
+        .modal__version--options
+            .modal__version--header
+                h2 Add Version
+                span.modal__version--close ×
+            .modal__version--body
+                input.modal__version--input(type='text' maxlength='30')
+                button.modal__version--button Add        
+
+block script
+    script(src="js/addIssue.js")
+
+

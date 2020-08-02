@@ -1,0 +1,55 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+        link(rel='stylesheet' href='/css/login.css')
+        title #{title}
+    body
+        .login-form
+            h2.heading-secondary Log into your account
+            form.form.form--login
+                .form__group
+                    label.form__label(for='email') Email Adress
+                    input#emailLogin.form__input(type='email' placeholder='you@example.com' required)
+                .form__group
+                    label.form__label(for='password') Password
+                    input.form__input(id='passwordLogin' type='password' placeholder='••••••••' required minlength='8')
+                .form__group
+                    button.btn.btn--login Login
+                .options
+                    p.signup--link Create account
+                    p.reset--link Forgot your password?
+                    p.login--guest Log in as Guest
+
+        .singup-form(style='display: none')
+            h2.heading-secondary Create a new account
+            form.form.form--singup
+                .form__group
+                    label.form__label(for='text') Name
+                    input#nameSignup.form__input(type='text' placeholder='Guest' required)
+                .form__group
+                    label.form__label(for='email') Email Adress
+                    input#emailSignup.form__input(type='email' placeholder='you@example.com' required)
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password
+                    input.form__input(id='passwordSignup' type='password' placeholder='••••••••' required minlength='8')
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password Confirm
+                    input.form__input(id='passwordConfirmSignup' type='password' placeholder='••••••••' required minlength='8')
+                .form__group
+                    button.btn.btn--signup Signup
+                .options
+                    p.login--back Already have an account
+        .reset-form(style='display: none')                
+            h2.heading-secondary Reset password
+            form.form.form--reset
+                .form__group
+                    label.form__label(for='email') Email Adress
+                    input#emailReset.form__input(type='email' placeholder='you@example.com' required)
+                .form__group
+                    button.btn--reset Send Email
+                .options
+                    p.login--back Already have an account
+        script(src="/js/login.js")

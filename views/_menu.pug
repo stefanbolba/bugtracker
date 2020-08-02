@@ -1,0 +1,7 @@
+.main__menu
+    ul.menu
+        li: a(href="/me" class=`link ${title.includes('Account') ? 'active' : ''}`) Hello #{user.name}
+        li: a(href="/" class=`link ${title === 'Home Page' ? 'active' : ''}`) Home
+        li: a(href="/addissue" class=`link ${title === 'Add Issue Page' ? 'active' : ''}`) Add Issue
+        li: a(href="/issues" class=`link ${title === 'Find Issues Page' ? 'active' : ''}`) Issues
+        li: a(href="/users" class=`link ${title === 'User List' ? 'active' : ''}`) User List

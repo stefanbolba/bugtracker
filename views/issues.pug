@@ -1,0 +1,223 @@
+extends base    
+
+mixin menuElements(el)
+    li #{el.name}
+mixin resultProperties(prop)
+    - let dataSet = prop
+    - if(prop === 'subject') dataSet = 'name' 
+    - if(prop === 'created at') dataSet = 'createdAt' 
+    - if(prop === 'due date') dataSet = 'dueDate' 
+    - if(prop === 'registered by') dataSet = 'user' 
+    div(class=`${prop}__prop` data-prop=`${dataSet}`)
+        span= `${prop}`     
+
+block head
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+    link(rel='stylesheet' href='/css/issues.css')
+    title #{title}
+
+block content
+    .content                  
+        // Start Main Container
+        .main__container(style='display: flex;')
+            .content__project
+                a(href='/')
+                    img.project__icon(src='/img/office.jpeg' alt='project-logo')
+                h2.project__name(style='font-size: 20px;') Bug Traker
+            // Start Status Container
+            .status__conditions
+                .filter__status
+                    span.filter__name Status:
+                    .status__item.filter__active
+                        span All
+                    .status__item
+                        span Open
+                    .status__item
+                        span In Progress
+                    .status__item
+                        span Resolved
+                    .status__item
+                        span Closed
+            // End Status Container
+            // Start search conditions section
+            .search__conditions
+                .search__category
+                    span.category__name Category
+                    button.category__button
+                        span.category__value unassigned
+                        .arrow-down-one
+                    .category__menu(style='display: none;')
+                        .category__search--menu
+                            input.category__input(type='text')
+                        ul.category__list
+                            li.active__menu unassigned
+                            each cat in category
+                                +menuElements(cat)
+
+                .search__asignee
+                    span.asignee__name Asignee
+                    button.asignee__button
+                        span.asignee__value unassigned
+                        .arrow-down-two
+                    .asignee__menu(style='display: none;')
+                        .asignee__search--menu
+                            input.asignee__input(type='text')
+                        ul.asignee__list
+                            li.active__menu unassigned
+                            each asig in asignee
+                                +menuElements(asig)
+
+                .search__keyword
+                    span.search__keyword Keyword
+                    input.keyword__value(type='text' placeholder='Search Subject...')
+            // End search conditions section
+            // Start Result controler
+            .result__controler
+                .page__control
+                    .page__control--number
+                        span.page__number= pageNumber
+                        span  of 
+                        span.page__total= Math.ceil(totalIssues/resultsPage)                                               
+                    .page__control--buttons
+                        span.page--maxBackward(data-page='1') <<
+                        span.page--backward(data-page=`${pageNumber - 1 > 0 ? pageNumber*1 - 1 : pageNumber}`) <
+                        .page--number
+                            - let n = 0
+                            while n < Math.ceil(totalIssues/resultsPage) 
+                                span(data-page=`${n + 1}` class=`${(n + 1) === pageNumber*1 ? 'active__page' : ''}`)= n++ +1
+
+                        span.page--forward(data-page=`${pageNumber < Math.ceil(totalIssues/resultsPage) ? pageNumber*1 + 1 : pageNumber}`) >
+                        span.page--maxForward(data-page=`${Math.ceil(totalIssues/resultsPage)}`) >>
+                din.result__actions
+                    button.options__button
+                        img.options__button--img(src='/img/levels.png')
+                        span.options__button--text View Options
+            // End Result controler
+            // Start result section                        
+            .result__container
+                .result__properties
+                    each prop in properties
+                        +resultProperties(prop)
+
+                div.result__entry   
+                    each el in issue
+                        .issue__properties(data-id=`${el._id}`)
+                            - if(el.type) 
+                                div(class="issue__entry")
+                                    span(style=`${style(el.type)}`)= el.type
+                            - if(el.name)
+                                div(class="subject__entry")
+                                    span= el.name
+                            - if(el.asignee)
+                                div(class="asignee__entry")
+                                    span= el.asignee
+                            - if(el.status) 
+                                div(class="status__entry")
+                                    span(style=`${style(el.status)}`)= el.status
+                            - if(el.category)
+                                div(class="category__entry")
+                                    span= el.category
+                            - if(el.priority)
+                                div(class="priority__entry")
+                                    span= el.priority
+                            - if(el.createdAt)
+                                div(class="created__entry")
+                                    span= `${(el.createdAt.getDate() < 10 ? '0'+el.createdAt.getDate() : el.createdAt.getDate())}-${(el.createdAt.getMonth() + 1 < 10 ? '0'+(el.createdAt.getMonth() + 1) : el.createdAt.getMonth() + 1)}-${el.createdAt.getFullYear()}`
+                            - if(el.dueDate)
+                                div(class="due-date__entry")
+                                    span= `${(el.dueDate.getDate() < 10 ? '0'+el.dueDate.getDate() : el.dueDate.getDate())}-${(el.dueDate.getMonth() + 1 < 10 ? '0'+(el.dueDate.getMonth() + 1) : el.dueDate.getMonth() + 1)}-${el.dueDate.getFullYear()}`
+                            - if(el.user)
+                                div(class="registered__entry")
+                                    span= el.user.name
+                            - if(el.version)
+                                div(class="version__entry")
+                                    span= el.version                          
+
+            // End result section
+            // Start Result controler
+            .result__controler
+                .page__control
+                    .page__control--number
+                        span.page__number= pageNumber
+                        span  of 
+                        span.page__total= Math.ceil(totalIssues/resultsPage)  
+                    .page__control--buttons
+                        span.page--maxBackward(data-page='1') <<
+                        span.page--backward(data-page=`${pageNumber - 1 > 0 ? pageNumber*1 - 1 : pageNumber}`) <
+                        span.page--number 
+                            - let m = 0
+                            while m < Math.ceil(totalIssues/resultsPage) 
+                                span(data-page=`${m + 1}` class=`${(m + 1) === pageNumber*1 ? 'active__page' : ''}`)= m++ +1
+
+                        span.page--forward(data-page=`${pageNumber < Math.ceil(totalIssues/resultsPage) ? pageNumber*1 + 1 : pageNumber}`) >
+                        span.page--maxForward(data-page=`${Math.ceil(totalIssues/resultsPage)}`) >>
+
+                din.result__actions
+                    button.options__button
+                        img.options__button--img(src='./img/levels.png')
+                        span.options__button--text View Options
+            // End Result controler
+            footer.issue__footer
+
+        .options__modal(style='display: none;')
+            .options__modal--content
+                .options__modal--header
+                    h2 View Options
+                    span.options__modal--closeBtn x
+                .options__modal--body
+                    .results__perPage
+                        p Results per page
+                        form.option__modal--form
+                            ul.results__list
+                                li
+                                    input#20.input__radio(type='radio' value='20' name='radio__results' checked='checked')
+                                    label(for='20') 20
+                                li
+                                    input#40.input__radio(type='radio' value='40' name='radio__results')
+                                    label(for='40') 40
+                                li
+                                    input#60.input__radio(type='radio' value='60' name='radio__results')
+                                    label(for='60') 60
+                    .display__settings
+                        p Display Table Settings
+                        ul.settings__list
+                            li
+                                input#type.input__checkbox(type='checkbox' data-column-name='task' checked)
+                                label(for='type') Issue Type
+                            li
+                                input#name.input__checkbox(type='checkbox' data-column-name='subject' checked)
+                                label(for='name') Subject
+                            li
+                                input#asignee.input__checkbox(type='checkbox' data-column-name='asignee' checked)
+                                label(for='asignee') Asignee
+                            li
+                                input#status.input__checkbox(type='checkbox' data-column-name='status' checked)
+                                label(for='status') Status
+                            li
+                                input#category.input__checkbox(type='checkbox' data-column-name='category' checked)
+                                label(for='category') Category
+                            li
+                                input#priority.input__checkbox(type='checkbox' data-column-name='priority' checked)
+                                label(for='priority') Priority
+                            li
+                                input#createdAt.input__checkbox(type='checkbox' data-column-name='created' checked)
+                                label(for='createdAt') Created At
+                            li
+                                input#dueDate.input__checkbox(type='checkbox' data-column-name='dueDate' checked)
+                                label(for='dueDate') Due Date
+                            li
+                                input#user.input__checkbox(type='checkbox' data-column-name='registeredBy' checked)
+                                label(for='user') Registered By
+                            li
+                                input#version.input__checkbox(type='checkbox' data-column-name='version' checked)
+                                label(for='version') Version
+                    p.option__modal--text The settings you have saved are stored on your browser and will be remembered.
+
+block script
+    script(src="/js/issues.js")
+
+
+
+

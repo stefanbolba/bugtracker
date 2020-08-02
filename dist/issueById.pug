@@ -1,0 +1,115 @@
+extends base   
+
+mixin addComment(comment)
+    .comment__list--item(data-id=`${comment.id}`)
+        .comment__content
+            img.user__image--comment(src=`/img/users/${user.photo}` alt='User photo')
+            .user__info-comment
+                span.user__name--comment= comment.user.name
+                span.comment__date= comment.createdAt
+            .comment__action
+                button.comment__action--button ...
+                .comment__action--menu(style="display: none;")
+                    ul.comment__action--list
+                        li.comment__action--edit Edit Comment
+                        li.comment__action--delete Delete
+        .comment__data
+            p.coment__text= comment.comment            
+
+block head
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/issues.css')
+    title #{title}
+
+block content
+    .content        
+        .second__container
+            .content__project
+                a(href='/')
+                    img.project__icon(src='/img/office.jpeg' alt='project-logo')
+                h2.project__name(style='font-size: 20px;') Bug Traker
+            .preview__name
+                h3.preview__name--value= issue.name
+            .preview__content
+                .user__info
+                    img.user__icon(src=`/img/users/${user.photo}` alt='User photo')
+                        
+                    span.user__name
+                        span.user__name--text= issue.user.name
+                .preview__description
+                    p.preview__description--value= issue.description
+                .preview__properites
+                    .preview__type
+                        .status__container
+                            span Type
+                        span.preview__type--value= issue.type
+                    .status__preview
+                        .status__container
+                            span Status
+                        span.open.status__preview--value= issue.status
+                    .preview__priority
+                        .status__container
+                            span Priority
+                        span.priprity__preview--value= issue.priority
+                    .preview__duedate
+                        .status__container
+                            span Due Date
+                        span.duedate__preview--value= splitDate(issue.dueDate)
+                        //- Fri Jul 24 2020 01:00:00 GMT+0100 (British Summer Time)
+                    .preview__asignee
+                        .status__container
+                            span Asignee
+                        span.asignee__preview--value= issue.asignee
+                    .preview__category
+                        .status__container
+                            span Category
+                        span.category__preview--value=  issue.category
+            .comment__container
+                h3
+                    | Comment 
+                    span.comment__number (#{issue.comments.length})
+                .comment__list
+                    each comment in issue.comments
+                        +addComment(comment)
+
+                .comment__editor--show(style='display: flex;')
+                    .comment__button
+                        p Comment...
+                .comment__editor(style='display: none;')
+                    .comment__editor--container
+                        textarea.comment__editor--value(placeholder='Comment')
+                        .comment__editor--control
+                            .comment__status
+                                span.status__comment--name Status
+                                button.status__comment--button
+                                    span.status__comment--value= issue.status
+                                    .arrow-down-three
+                                .status__comment--menu(style='display: none;')
+                                    ul.status__comment--list
+                                        li Open
+                                        li In Progress
+                                        li Resolved
+                                        li Closed
+                            .comment__asignee
+                                span.asignee__comment--name Asignee
+                                button.asignee__comment--button
+                                    span.asignee__button--value= issue.asignee
+                                    .arrow-down-four
+                                .asignee__comment--menu(style='display: none;')
+                                    .asignee__search--menu
+                                        input.asignee__value(type='text')
+                                    ul.asignee__comment--list
+                                        each user in users  
+                                            li= user.name
+                                                                                    
+                            .comment__duedate
+                                span.comment__duedate--name Due Date
+                                input.comment__duedate--value(type='date' value=`${splitDate(issue.dueDate)}`)
+                    .button__list
+                        button.cancel__btn(type='submit') Cancel
+                        button.save--change__btn(type='submit') Update Issue
+                        button.add--comment__btn(type='submit') Add Comment
+        footer.comment__footer
+block script
+    script(src="/js/issueById.js")

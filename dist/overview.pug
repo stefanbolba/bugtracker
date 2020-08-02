@@ -1,0 +1,88 @@
+extends base
+
+block head
+    meta(charset="UTF-8")
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/overview.css')
+    title #{title}
+
+block content    
+    .content
+        .content__project
+            a(href='#')
+                img.project__icon(src='./img/office.jpeg' alt='project-logo')
+            h2.project__name(style='font-size: 20px;') Bug Traker
+        .page__name
+            h4 Home
+        .section__container
+            .timeline__section
+                //- .timeline__entry
+                //-     .timeline__date
+                //-         h4.timeline__date--value Sat May. 16, 2020
+                //-     .timeline__content
+                //-         span.user__icon
+                //-             img
+                //-         .timeline__content--entry
+                //-             .entry__type
+                //-                 span.entry__user Name
+                //-                 span added a new
+                //-                 span.entry__type--value issue
+                //-             .entry__subject
+                //-                 span.entry__subject--value This is the subject
+                //-                 .entry__comment
+                //-                     button.add--comment(alt='Add Comment')
+                //-                         | ...
+                //-             .comment__data
+                //-                 .comment__data--edit
+                //-                     textarea.comment__edit--value
+                //-                     .comment__edit--buttons
+                //-                         button.comment__cancel Cancel
+                //-                         button.comment__submit Submit
+                //-             button.expand__comments
+                //-                 h4
+                //-                     | Entry has
+                //-                     span.comment--number (0)
+                //-                     |  comments
+                //-                 span.expand--symbol 0
+                //-             .comment__container
+                //-                 .comment__list--item
+                //-                     .comment--content
+                //-                         span Stefan Bolba
+                //-                         span 18-05-2020
+                //-                     .comment--data
+                //-                         p.comment--text This is a comment
+            .section__status
+                .task__status
+                    h4 Status
+                    .task__status--entry
+                        .status__pie(style='--size: 180;')
+                            .pie--segment(style='--offset: 100; --value: 1; --bg: #db0a5b; --over50: 0;')
+                            .pie--segment(style='--offset: 199; --value: 1; --bg: #2ecc71;')
+                            .pie--segment(style='--offset: 199; --value: 1; --bg: #2ecc71;')
+                            .pie--segment(style='--offset: 199; --value: 1; --bg: #2ecc71;')
+                        .status--ledger
+                            div
+                                span.open--color 0
+                                span Open
+                            div
+                                span.inProgress--color 0
+                                span In Progress
+                            div
+                                span.resolved--color 0
+                                span Resolved
+                            div
+                                span.closed--color 0
+                                span Closed
+                .category__status
+                    h4 Category
+                    .category__status--entry
+                        .category--entry
+                            h4 Graph Name
+                            .category__graph
+                                span(data-tooltip='Custom tooltip on the top.' data-tooltip-position='top')
+                                span
+                                span
+                                span
+                        .category--entry
+block script
+    script(src="js/overview.js")

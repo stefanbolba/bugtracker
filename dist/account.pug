@@ -1,0 +1,54 @@
+extends base 
+
+block head
+  meta(charset="UTF-8")
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/account.css')
+  title #{title}
+
+block content
+  .content                  
+    // Start Main Container
+    .main__container
+      .content__project
+        a(href='/')
+          img.project__icon(src='/img/office.jpeg' alt='project-logo')
+        h2.project__name(style='font-size: 20px;') Bug Traker
+      // Start User Info
+    .user-view__content
+      .user-view__form-container
+        h2.heading-secondary.ma-bt-md Your account settings        
+        form.form.form-user-data
+          .form__group
+            label.form__label(for='name') Name
+            input#name.form__input(type='text' value=`${user.name}`, required)
+          .form__group.ma-bt-md
+            label.form__label(for='email') Email address
+            input#email.form__input(type='email' value=`${user.email}`, required)
+          .form__group.form__photo-upload
+            span.form__user-img
+              img.form__user-photo(src=`/img/users/${user.photo}` alt='User photo')
+            label.save__photo(for='photo') Chose new photo
+            input.form_upload(type='file' accept='image/*' id='photo' name='photo' style='display: none')
+          .form__group.right
+            button.save__settings Save settings
+
+      .line &nbsp;
+      .user-view__form-container
+        h2.heading-secondary.ma-bt-md Password change
+        form.form.form-user-settings
+          .form__group
+            label.form__label(for='password-current') Current password
+            input#password-current.form__input(type='password' placeholder='••••••••', required, minlength='8')
+          .form__group
+            label.form__label(for='password') New password
+            input#password.form__input(type='password' placeholder='••••••••', required, minlength='8')
+          .form__group.ma-bt-lg
+            label.form__label(for='password-confirm') Confirm password
+            input#password-confirm.form__input(type='password' placeholder='••••••••', required, minlength='8')
+          .form__group.right
+            button.save__password Save password
+  footer
+
+block script
+  script(src="js/account.js")
