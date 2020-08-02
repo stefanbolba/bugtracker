@@ -15,6 +15,7 @@ const viewRouter = require('./routes/viewRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHadler = require('./controllers/errorController');
 
+//Start express
 const app = express();
 
 //Use a renderer for html pages
