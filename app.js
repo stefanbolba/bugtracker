@@ -39,7 +39,7 @@ app.use(cookieParser());
 
 // Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
-// Data sanitization agais XSS
+// Data sanitization against XSS
 app.use(xss());
 
 //Compression midleware
