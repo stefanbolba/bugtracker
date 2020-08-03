@@ -6,8 +6,7 @@ const app = require('./app');
 
 //Add this variable here since there are problems with setting the heroku config file for it
 const database =
-  'mongodb+srv://stefan:<PASSWORD>t@cluster0.11tei.mongodb.net/bugtraker?retryWrites=true&w=majority';
-  
+  'mongodb+srv://stefan:<PASSWORD>@cluster0.11tei.mongodb.net/bugtraker?retryWrites=true&w=majority';
 const DB = database.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
 
 //CONNECT TO THE DATABASE
