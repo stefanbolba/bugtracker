@@ -56,7 +56,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
 
   //1) Check if the email and password exit
   if (!email || !password) {
-    return next(new AppError('Please provide email and passoword', 400));
+    return next(new AppError('Please provide email and password', 400));
   }
 
   //2) Check if the user exists && select the password
