@@ -20,7 +20,7 @@ body {
   animation-name: animate;
   animation-duration: 0.5s;
   animation-iteration-count: 1;  
-  animation-fill-mode: forwards;    
+  animation-fill-mode: forwards;  
 }
 @keyframes animate {
 from {height: 40px;}
@@ -70,6 +70,10 @@ to {height: 70vh;}
 }
 h2 {
   font-weight: 500;
+}
+
+.form--login, .form--reset {
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75); 
 }
 
 /*ALERT CSS*/

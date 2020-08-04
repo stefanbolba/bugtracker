@@ -19,6 +19,9 @@ const globalErrorHadler = require('./controllers/errorController');
 //Start express
 const app = express();
 
+//Trust proxy
+app.enable('trust proxy')
+
 //Use a renderer for html pages
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));

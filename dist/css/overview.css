@@ -114,7 +114,7 @@ body {
     padding: 15px 0px 10px 15px;
     border-top: 1px solid #c2c2c2;
     animation: expand;
-    animation-duration: 0.3s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
