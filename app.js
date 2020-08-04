@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const cookieParser = require('cookie-parser');
-// const compression = require('compression');
+const compression = require('compression');
 
 const issueRouter = require('./routes/issueRoutes');
 const userRouter = require('./routes/userRoutes');
@@ -44,7 +44,7 @@ app.use(xss());
 
 //Creates bugs. Need to investigate more
 //Compression midleware
-// app.use(compression);
+app.use(compression());
 
 //ROUTES
 app.use('/', viewRouter);
