@@ -1,4 +1,4 @@
 #Bugtraker App
 
-Built using moder tehnologies: node.js, express, mongodb, mongoose
+Built using modern tehnologies: node.js, express, mongodb, mongoose
 
