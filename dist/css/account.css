@@ -38,14 +38,13 @@ body {
   background-color: #4caf93;
   width: 200px;
   height: 100%;
-  z-index: 1;
+  z-index: 999;
 }
 .menu {
   list-style: none;
   width: 100%;
   margin: 0;
   padding: 0;
-  position: absolute;
 }
 .menu li {
   box-sizing: border-box;
@@ -62,9 +61,23 @@ body {
   color: #4caf93;
 }
 .active,
-.link:hover {
+.link:hover,
+.user__info:hover {
   background-color: white;
   color: #4caf93;
+}
+
+.user__menu {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.user__info {
+  padding-left: 25px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding-bottom: 5px;
 }
 
 /* USER CONTAINER CSS */
@@ -102,7 +115,7 @@ label,
   margin-top: 20px;
 }
 .save__photo:hover {
-  color:#20bf6b;
+  color: #20bf6b;
   text-decoration: underline;
   cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import { form } from './views/base';
-import { login, signup, forgotPassword } from './models/PostLoginInfo';
+import { login, signup, forgotPassword, guest } from './models/PostLoginInfo';
 
 form.submitBtn.addEventListener('click', (e) => {
   const email = form.emailInput.value;
@@ -11,11 +11,8 @@ form.submitBtn.addEventListener('click', (e) => {
 });
 
 form.guestBtn.addEventListener('click', (e) => {
-  const email = form.guestEmail;
-  const password = form.guestPassword;
-
   e.preventDefault();
-  login(email, password);
+  guest();
 });
 
 form.submitBtnSignup.addEventListener('click', (e) => {

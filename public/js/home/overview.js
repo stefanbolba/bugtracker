@@ -7,13 +7,17 @@ import { postComment, updateState } from './models/PostComment';
 import * as TimelineView from './views/timelineView';
 import { pieChart, graph } from './views/chartsView';
 
+import { button, logut } from '../utils/logout';
+
 const state = {};
+
+button.addEventListener('click', logut);
 
 window.addEventListener('load', async (el) => {
   try {
     //1) Import
     await getIssues(state);
-    await getCategories(state);    
+    await getCategories(state);
 
     //2) Create the timeline
     TimelineView.displayTimeline(state.issues);

@@ -55,7 +55,6 @@ export const modalQuery = (fieldsList, limitValue) => {
   let fields = `fields=${fieldsList.toString()}`;
   let limit = `limit=${limitValue}`;
   if (query.length < 1 || query[0] === '') query = [];
-  
 
   if (!query[0]) {
     query.push(fields);
@@ -82,5 +81,5 @@ export const checkQuery = (fieldsList, limitValue) => {
 };
 
 export const redirectIssue = (id) => {
-  document.location.replace(`/issues/${id}`)
-}
+  document.location.replace(`/issues/${id}`);
+};

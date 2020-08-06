@@ -9,9 +9,7 @@ export const form = {
   passwordConfirmInputSignup: document.querySelector('#passwordConfirmSignup'),
   submitBtnSignup: document.querySelector('.btn--signup'),
 
-  guestBtn: document.querySelector('.login--guest'),
-  guestEmail: 'guest@bugtraker.com',
-  guestPassword: 'guestpassword',
+  guestBtn: document.querySelector('.login--guest'),  
 
   showSignupBtn: document.querySelector('.signup--link'),
   showLoginBtn: document.querySelectorAll('.login--back'),

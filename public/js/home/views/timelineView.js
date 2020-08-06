@@ -23,7 +23,9 @@ export const displayTimeline = (state) => {
     </div>`;
     const markupTwo = `
     <div class="timeline__content expand" data-id="${el.id}">
-        <img class="user__icon" src="/img/users/${el.user.photo}" alt='User photo'>          
+        <img class="user__icon" src="/img/users/${
+          el.user.photo
+        }" alt='User photo'>          
         <div class="timeline__content--entry">
             <div class="entry__type">
                 <span class="entry__user">${el.user.name || 'Undefined'}</span>
@@ -118,28 +120,32 @@ export const cancelArea = (container) => {
 
 export const clearArea = (textArea) => {
   textArea.value = '';
-}
+};
 
 export const commentLength = (state, id, text) => {
   text.innerText = '';
-  state.forEach(el => {
-      if (el.id === id) {
-          text.innerText = `(${el.comments.length})`;
-      }
-  })
+  state.forEach((el) => {
+    if (el.id === id) {
+      text.innerText = `(${el.comments.length})`;
+    }
+  });
 };
 
-export const hideContent = (content, date) => {
-  content.forEach(el => {
-      el.classList.add('shrink__content'); 
-      el.classList.remove('timeline__content');    
-      date.style = 'background-color:  rgb(214, 212, 212)';
-  })    
+export const hideContent = (content, date) => {  
+  content.forEach((el) => {
+    el.classList.add('shrink__content');
+    el.classList.remove('timeline__content');
+    date.style = 'background-color:  rgb(214, 212, 212)';
+    setTimeout(() => {
+      el.style = 'display: none';
+    }, 600);
+  });
 };
 export const showContent = (content, date) => {
-  content.forEach(el => {
-      el.classList.remove('shrink__content');
-      el.classList.add('timeline__content');
-      date.removeAttribute("style");
-  })
-}
+  content.forEach((el) => {
+    el.classList.remove('shrink__content');
+    el.classList.add('timeline__content');
+    date.removeAttribute('style');
+    el.style = 'display: grid';
+  });
+};

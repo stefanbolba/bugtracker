@@ -33,7 +33,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     .jpeg({ quality: 90 })
     .toFile(`dist/img/users/${req.file.filename}`);
 
-    next()
+  next();
 });
 
 const filterObj = (obj, ...allowedFields) => {
@@ -87,11 +87,18 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
     message: 'This route is not defined! Please use /signup instead!',
   });
+};
+
+exports.loginGuest = (req, res, next) => {
+  req.body.email = 'guest@bugtraker.com';
+  req.body.password = 'guestpassword';
+  next();
 };
 
 exports.getAllUsers = factory.getAll(User);

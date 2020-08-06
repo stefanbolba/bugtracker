@@ -3,6 +3,9 @@ import { values, elements, modal } from './views/base';
 import { createPreview, hidePreview } from './views/previewView';
 
 import { addIssue, addCategory, addVersion } from './models/Post';
+import { button, logut } from '../utils/logout';
+
+button.addEventListener('click', logut);
 
 //Add Issue to the database
 elements.addButton.forEach((el) =>
@@ -37,9 +40,7 @@ modal.categoryAddBtn.addEventListener('click', async (e) => {
     await addCategory(modal.categoryInput.value);
     modal.categoryInput.value = '';
     modal.category.style = 'display:none';
-  } catch (err) {
-    
-  }
+  } catch (err) {}
 });
 modal.versionAddBtn.addEventListener('click', () => {
   addVersion(modal.versionInput.value);
@@ -60,7 +61,7 @@ window.addEventListener('click', (e) => {
 });
 
 elements.previewButton.forEach((el) =>
-  el.addEventListener('click', () => {    
+  el.addEventListener('click', () => {
     createPreview(
       values.name.value,
       values.description.value,

@@ -2,6 +2,9 @@ import '@babel/polyfill';
 import { account } from './views/base';
 import { updateDOMPhoto } from './views/userView';
 import { updateSettings } from './models/UpdateSettings';
+import { button, logut } from '../utils/logout';
+
+button.addEventListener('click', logut);
 
 account.saveSettings.addEventListener('click', async (e) => {
   e.preventDefault();

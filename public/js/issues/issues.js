@@ -5,13 +5,15 @@ import {
   getQuery,
   modalQuery,
   checkQuery,
-  redirectIssue
+  redirectIssue,
 } from './models/Search';
 import { Settings } from './models/ModalOptions';
 import { renderMenu, addActiveFromParams, addArrow } from './views/searchView';
 import { addChecked } from './views/modalView';
-
+import { button, logut } from '../utils/logout';
 const state = {};
+
+button.addEventListener('click', logut);
 
 filter.statusList.forEach((el) => {
   el.addEventListener('click', () => {
@@ -93,7 +95,7 @@ issuesElm.optionsBtn.forEach((el) =>
       issuesElm.modalLimitItemsList.forEach((el) => {
         if (el.checked) limitValue = el.id;
       });
-      
+
       //Save the options
       if (!state.modalOptions) state.modalOptions = new Settings();
       state.modalOptions.persistData(fieldsList, limitValue);
@@ -114,9 +116,11 @@ page.buttonsContainer.forEach((el) =>
   })
 );
 
-issuesElm.issuesPropertiesList.forEach(el => el.addEventListener('click', () => {
-  redirectIssue(el.dataset.id)
-}))
+issuesElm.issuesPropertiesList.forEach((el) =>
+  el.addEventListener('click', () => {
+    redirectIssue(el.dataset.id);
+  })
+);
 
 window.addEventListener('load', () => {
   if (!state.modalOptions) state.modalOptions = new Settings();
@@ -126,3 +130,5 @@ window.addEventListener('load', () => {
   addArrow();
   addChecked(state.modalOptions.limit, state.modalOptions.fields);
 });
+
+

@@ -60,8 +60,29 @@ export const forgotPassword = async (email) => {
     });
 
     if ((res.data.status = 'succes')) {
-      showAlert('succes', 'Email sent successfully! Token valid for only 10 minutes.');
+      showAlert(
+        'succes',
+        'Email sent successfully! Token valid for only 10 minutes.'
+      );
     }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
+export const guest = async () => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/users/guest',
+    });
+
+    if ((res.data.status = 'succes')) {
+      showAlert('succes', 'Succesfully logged in as Guest');
+    }
+    window.setTimeout(() => {
+      location.assign('/');
+    }, 1500);
   } catch (err) {
     showAlert('error', err.response.data.message);
   }

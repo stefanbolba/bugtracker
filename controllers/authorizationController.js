@@ -22,7 +22,7 @@ const createSendToken = (user, statusCode, req, res) => {
     httpOnly: true,
     secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
   };
-  
+
   res.cookie('jwt', token, cookieOptions);
 
   user.password = undefined;
@@ -71,7 +71,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, req, res);
 });
 
-exports.logout = (req, res) => {
+exports.logout = (req, res) => {  
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now + 10 * 1000),
     httpOnly: true,
