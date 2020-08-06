@@ -108,7 +108,7 @@ body {
   flex-direction: column;
   cursor: pointer;
 }
-.user__info {
+.user__links {
   padding-left: 25px;
   text-decoration: none;
   color: white;

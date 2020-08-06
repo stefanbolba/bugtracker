@@ -62,7 +62,7 @@ body {
 }
 .active,
 .link:hover,
-.user__info:hover {
+.user__links:hover {
   background-color: white;
   color: #4caf93;
 }
@@ -72,7 +72,7 @@ body {
   flex-direction: column;
   cursor: pointer;
 }
-.user__info {
+.user__linksser__info {
   padding-left: 25px;
   text-decoration: none;
   color: white;
