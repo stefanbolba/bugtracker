@@ -58,6 +58,7 @@ export const forgotPassword = async (email) => {
         email,
       },
     });
+    console.log(res)
 
     if ((res.data.status = 'succes')) {
       showAlert(
