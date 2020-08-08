@@ -71,7 +71,7 @@ exports.logIn = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, req, res);
 });
 
-exports.logout = (req, res) => {  
+exports.logout = (req, res) => {
   res.cookie('jwt', 'loggedout', {
     expires: new Date(Date.now + 10 * 1000),
     httpOnly: true,
@@ -150,7 +150,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     //3) Send it to user's email
     const resetURL = `${req.protocol}://${req.get(
       'host'
-    )}/api/v1/users/resetPassword/${resetToken}`;
+    )}/recover/${resetToken}`;
 
     await new Email(user, resetURL).sendPasswordReset();
 
@@ -159,7 +159,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
       message: 'Token sent to email!',
     });
   } catch (err) {
-    console.log(err)
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
