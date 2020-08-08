@@ -15,7 +15,6 @@ export const logut = async () => {
       document.location.replace(`/login`);
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);
-    console.log(err)
+    showAlert('error', err.response.data.message);    
   }
 };
