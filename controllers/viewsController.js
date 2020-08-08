@@ -104,6 +104,12 @@ exports.getMe = (req, res, next) => {
   });
 };
 
+exports.recover = (req,res, next) => {
+  res.status(200).render('recover', {
+    title: 'Recover password'
+  })
+}
+
 const splitDate = (date) => {
   const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
   const month =

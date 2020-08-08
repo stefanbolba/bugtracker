@@ -51,6 +51,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
 
 export const forgotPassword = async (email) => {
   try {
+    console.log(email)
     const res = await axios({
       method: 'POST',
       url: '/api/v1/users/forgotPassword',
@@ -67,6 +68,7 @@ export const forgotPassword = async (email) => {
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
+    console.log(err)
   }
 };
 

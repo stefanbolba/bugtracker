@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+        link(rel='stylesheet' href='/css/recover.css')
+        title #{title}
+    body
+        .recover-form
+            h2.heading-secondary Change password
+            form.form.form--recover
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password
+                    input.form__input(id='password' type='password' placeholder='••••••••' required minlength='8')
+                .form__group.ma-bt-md
+                    label.form__label(for='password') Password Confirm
+                    input.form__input(id='passwordConfirm' type='password' placeholder='••••••••' required minlength='8')
+                .form__group
+                    button.btn--recover Submit
+        script(src="/js/recover.js")
+                

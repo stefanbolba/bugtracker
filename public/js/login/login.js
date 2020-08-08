@@ -26,6 +26,7 @@ form.submitBtnSignup.addEventListener('click', (e) => {
 });
 
 form.resetBtn.addEventListener('click', (e) => {
+  const email = form.emailResetInput.value
   e.preventDefault();
   forgotPassword(email);
 });

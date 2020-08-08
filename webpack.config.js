@@ -9,7 +9,8 @@ module.exports = {
     addIssue: './public/js/addIssue/addIssue.js',
     issues: './public/js/issues/issues.js',
     issueById: './public/js/issueById/issueById.js',
-    account: './public/js/account/account.js'
+    account: './public/js/account/account.js',
+    recover: './public/js/recover/recover.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -48,6 +49,11 @@ module.exports = {
       filename: 'account.pug',
       template: './views/account.pug',
       chunks: ['account'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'recover.pug',
+      template: './views/recover.pug',
+      chunks: ['recover'],
     }),
     new HtmlWebpackPugPlugin({}),  
   ],

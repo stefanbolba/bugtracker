@@ -34,8 +34,10 @@ router.get(
   viewsController.getIssueById
 );
 
-//Get User Data
+//Recover password
+router.get('/recover/:id', viewsController.recover)
 
+//Get User Data
 router.get(
   '/me',
   authorizationController.isLoggedIn,
