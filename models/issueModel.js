@@ -74,7 +74,7 @@ const issueSchema = new mongoose.Schema(
     },
     dueDate: {
       type: Date,
-      default: Date.now(),
+      required: [true, 'An issue must have a due date!']
     },
     updatedOn: Date,
   },
