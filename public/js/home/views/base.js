@@ -13,5 +13,5 @@ export const status = {
 }
 
 export const user = {
-    userName: document.querySelector('.user__info')
+    userName: document.querySelector('.user__name')
 }
