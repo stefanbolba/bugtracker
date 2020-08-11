@@ -6,8 +6,14 @@ const issueSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, 'An issue must have a name'],
-      maxlength: [140, 'An issue must have a Subject less or equll than 40 characters!'],
-      minlength: [10, 'An issue must have a Subject less or equll than 40 characters!'],
+      maxlength: [
+        140,
+        'An issue must have a Subject less or equll than 40 characters!',
+      ],
+      minlength: [
+        10,
+        'An issue must have a Subject less or equll than 40 characters!',
+      ],
     },
     description: {
       type: String,
@@ -58,7 +64,7 @@ const issueSchema = new mongoose.Schema(
       //Add the option later from a differen model
     },
     user: {
-      type: mongoose.Schema.ObjectId,      
+      type: mongoose.Schema.ObjectId,
       ref: 'User',
       required: [true, 'An issue must be created by a registered user!'],
     },
@@ -66,7 +72,10 @@ const issueSchema = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    dueDate: Date,
+    dueDate: {
+      type: Date,
+      default: Date.now(),
+    },
     updatedOn: Date,
   },
   {
