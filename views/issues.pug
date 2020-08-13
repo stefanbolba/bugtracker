@@ -2,6 +2,7 @@ extends base
 
 mixin menuElements(el)
     li #{el.name}
+
 mixin resultProperties(prop)
     - let dataSet = prop
     - if(prop === 'subject') dataSet = 'name' 
@@ -25,7 +26,7 @@ block content
             .content__project
                 a(href='/')
                     img.project__icon(src='/img/office.jpeg' alt='project-logo')
-                h2.project__name(style='font-size: 20px;') Bug Traker
+                h2.project__name(style='font-size: 20px;') Bug Tracker
             // Start Status Container
             .status__conditions
                 .filter__status
@@ -108,8 +109,8 @@ block content
                                 div(class="issue__entry")
                                     span(style=`${style(el.type)}`)= el.type
                             - if(el.name)
-                                div(class="subject__entry")
-                                    span= el.name
+                                div(class="subject__entry" title=`${el.name}`)
+                                    span= subject(el.name)
                             - if(el.asignee)
                                 div(class="asignee__entry")
                                     span= el.asignee

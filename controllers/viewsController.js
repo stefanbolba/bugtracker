@@ -77,6 +77,7 @@ exports.getIssues = catchAsync(async (req, res, next) => {
     asignee,
     splitDate,
     style,
+    subject,
     properties,
     pageNumber: req.query.page ? req.query.page : 1,
     resultsPage: req.query.limit ? req.query.limit : 20,
@@ -98,17 +99,17 @@ exports.getIssueById = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getMe = (req, res, next) => { 
+exports.getMe = (req, res, next) => {
   res.status(200).render('account', {
-    title: `${req.user.name} | Account`
+    title: `${req.user.name} | Account`,
   });
 };
 
-exports.recover = (req,res, next) => {
+exports.recover = (req, res, next) => {
   res.status(200).render('recover', {
-    title: 'Recover password'
-  })
-}
+    title: 'Recover password',
+  });
+};
 
 const splitDate = (date) => {
   const day = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
@@ -117,6 +118,7 @@ const splitDate = (date) => {
   const year = date.getFullYear();
   return `${day}/${month}/${year}`;
 };
+
 const style = (el) => {
   let color;
   if (el === 'task' || el === 'closed') color = '#c5d91d';
@@ -148,4 +150,15 @@ const resultProperties = (arr2) => {
     .split(',');
   const results = arr.filter((val) => !arr2.includes(val));
   return results;
+};
+
+const subject = (text) => {
+  const arr = [];
+  if (text.length < 25) return text;
+
+  for (let i = 0; i < 26; i++) {
+    arr.push(text.split('')[i]);
+  }
+  arr.push('...');
+  return arr.join('');
 };

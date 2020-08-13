@@ -96,7 +96,7 @@ exports.createUser = (req, res) => {
 };
 
 exports.loginGuest = (req, res, next) => {
-  req.body.email = 'guest@bugtraker.com';
+  req.body.email = 'guest@bugtracker.com';
   req.body.password = 'guestpassword';
   next();
 };

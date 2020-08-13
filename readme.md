@@ -1,4 +1,4 @@
-#Bugtraker App
+#Bugtracker App
 
 Built using moder tehnologies: node.js, express, mongodb, mongoose
 

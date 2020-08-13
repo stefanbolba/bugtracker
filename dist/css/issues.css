@@ -98,7 +98,7 @@ body {
 }
 .active,
 .link:hover,
-.user__info:hover {
+.user__links:hover {
   background-color: white;
   color: #4caf93;
 }
