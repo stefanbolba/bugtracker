@@ -12,7 +12,7 @@ const issueSchema = new mongoose.Schema(
       ],
       minlength: [
         10,
-        'An issue must have a Subject less or equll than 40 characters!',
+        'An issue must have a Subject more or equll with 10 characters!',
       ],
     },
     description: {
