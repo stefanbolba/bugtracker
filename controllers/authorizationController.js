@@ -73,9 +73,9 @@ exports.logIn = catchAsync(async (req, res, next) => {
 
 exports.logout = (req, res) => {
   res.cookie('jwt', 'loggedout', {
-    expires: new Date(Date.now + 10 * 1000),
+    expires: new Date(Date.now() + 10 * 1000),
     httpOnly: true,
-  });
+  });  
   res.status(200).json({ status: 'succes' });
 };
 
@@ -101,7 +101,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   //2) Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  //3) Chekc if the user still exists
+  //3) Check if the user still exists
   const curretUser = await User.findById(decoded.id);
 
   if (!curretUser) {
@@ -241,8 +241,8 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
 //   next();
 // };
 
-exports.isLoggedIn = async (req, res, next) => {
-  if (!req.cookies.jwt) {
+exports.isLoggedIn = async (req, res, next) => {  
+  if (!req.cookies.jwt || req.cookies.jwt === 'loggedout') {
     res.status(200).render('login', {
       title: 'Log In Page',
     });
