@@ -112,7 +112,7 @@ comment.showEditor.addEventListener('click', () => {
     const asignee = comment.asigneeMenuBtn.childNodes[0].textContent;
     const dueDate = comment.dueDateValue.value;
     if (status && status !== issue.status) obj.status = status;
-    if (asignee && asignee !== issue.asignee) obj.asignee = status;
+    if (asignee && asignee !== issue.asignee) obj.asignee = asignee;
     if (dueDate && dueDate !== issue.dueDate) obj.dueDate = dueDate;
     try {
       const trigger = await updateIssue(obj);
