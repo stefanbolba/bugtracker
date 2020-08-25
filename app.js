@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-//Body parser, rading data from the body in req.body
+//Body parser, reading data from the body in req.body
 //Used to see in the console the req.params
 app.use(express.json({ limt: '10kb' }));
 app.use(cookieParser());
