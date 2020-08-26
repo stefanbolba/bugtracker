@@ -6,7 +6,7 @@ mixin addComment(comment)
             img.user__image--comment(src=`/img/users/${user.photo}` alt='User photo')
             .user__info-comment
                 span.user__name--comment= comment.user.name
-                span.comment__date= comment.createdAt
+                span.comment__date= splitDate(comment.createdAt)
             .comment__action
                 button.comment__action--button ...
                 .comment__action--menu(style="display: none;")
@@ -14,7 +14,7 @@ mixin addComment(comment)
                         li.comment__action--edit Edit Comment
                         li.comment__action--delete Delete
         .comment__data
-            p.coment__text= comment.comment            
+            p.coment__text(style="white-space: pre-line")= comment.comment            
 
 block head
     meta(charset="UTF-8")
@@ -38,8 +38,8 @@ block content
                         
                     span.user__name
                         span.user__name--text= issue.user.name
-                .preview__description
-                    p.preview__description--value= issue.description
+                .preview__description                    
+                    p.preview__description--value(style="white-space: pre-line")= issue.description
                 .preview__properites
                     .preview__type
                         .status__container

@@ -110,7 +110,7 @@ block content
                                     span(style=`${style(el.type)}`)= el.type
                             - if(el.name)
                                 div(class="subject__entry" title=`${el.name}`)
-                                    span= subject(el.name)
+                                    span(style="white-space: pre-line")= el.name
                             - if(el.asignee)
                                 div(class="asignee__entry")
                                     span= el.asignee

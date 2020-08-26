@@ -4,12 +4,14 @@ import { showAlert } from './../../utils/alert';
 
 export const addIssue = async (...el) => {
   try {
+    const description = el[1].replace('\n', '/linebreak/')
+    console.log(description)
     const res = await axios({
       method: 'POST',
       url: '/api/v1/issues',
       data: {
         name: el[0],
-        description: el[1],
+        description,
         type: el[2],
         category: el[3],
         version: el[4],

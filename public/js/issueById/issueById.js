@@ -128,6 +128,7 @@ comment.showEditor.addEventListener('click', () => {
     const text = comment.commentValue.value;
     try {
       const comment = await addComment(text);
+      console.log(comment)
       
     } catch (err) {}
   });
