@@ -8,6 +8,7 @@ import {
   removeComment,
   textArea,
   cancelUpdate,
+  insertCommentUI
 } from './views/commentView';
 import * as editorView from './views/editorView';
 import {
@@ -41,9 +42,10 @@ comment.actionButton.forEach((el) =>
         const cancelBtn = commentData.querySelector('.comment__cancel');
         const submitBtn = commentData.querySelector('.comment__submit');
         const editedText = commentData.querySelector('.comment__edit--value');
+        console.log(editedText.value)
 
         cancelBtn.addEventListener('click', () => {
-          cancelUpdate(commentData, editedText);
+          cancelUpdate(commentData, editedText.value);
         });
 
         submitBtn.addEventListener('click', async () => {
@@ -127,10 +129,13 @@ comment.showEditor.addEventListener('click', () => {
   comment.addComment.addEventListener('click', async () => {
     const text = comment.commentValue.value;
     try {
-      const comment = await addComment(text);
-      console.log(comment)
+      const com = await addComment(text);
+      insertCommentUI(com.data.data)
+      console.log(com)
       
-    } catch (err) {}
+    } catch (err) {
+      console.log(err)
+    }
   });
 });
 

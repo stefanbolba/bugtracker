@@ -24,6 +24,9 @@ export const comment = {
   updateIssue: document.querySelector('.save--change__btn'),
   addComment: document.querySelector('.add--comment__btn'),
   commentValue: document.querySelector('.comment__editor--value'),
+
+  commentContainer: document.querySelector('.comment__list'),
+  userName: document.querySelector('.user__name').textContent.split(' ')[1],
 };
 
 export const issue = {
