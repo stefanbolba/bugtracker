@@ -8,7 +8,7 @@ import {
   removeComment,
   textArea,
   cancelUpdate,
-  insertCommentUI
+  insertCommentUI,
 } from './views/commentView';
 import * as editorView from './views/editorView';
 import {
@@ -17,6 +17,29 @@ import {
   updateIssue,
   addComment,
 } from './models/UpdateAndDelete';
+import { button, logout } from '../utils/logout';
+import { showContainer, hideContainer } from '../utils/userInfo';
+
+button.addEventListener('click', logout);
+
+window.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('user__information') ||
+    e.target.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.classList.contains('user__name')
+  ) {
+    showContainer();
+  } else {
+    hideContainer();
+  }
+});
 
 comment.actionButton.forEach((el) =>
   el.addEventListener('click', () => {
@@ -42,7 +65,7 @@ comment.actionButton.forEach((el) =>
         const cancelBtn = commentData.querySelector('.comment__cancel');
         const submitBtn = commentData.querySelector('.comment__submit');
         const editedText = commentData.querySelector('.comment__edit--value');
-        console.log(editedText.value)
+        console.log(editedText.value);
 
         cancelBtn.addEventListener('click', () => {
           cancelUpdate(commentData, editedText.value);
@@ -130,11 +153,10 @@ comment.showEditor.addEventListener('click', () => {
     const text = comment.commentValue.value;
     try {
       const com = await addComment(text);
-      insertCommentUI(com.data.data)
-      console.log(com)
-      
+      insertCommentUI(com.data.data);
+      console.log(com);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   });
 });

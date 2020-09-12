@@ -2,9 +2,29 @@ import '@babel/polyfill';
 import { account } from './views/base';
 import { updateDOMPhoto } from './views/userView';
 import { updateSettings } from './models/UpdateSettings';
-import { button, logut } from '../utils/logout';
+import { button, logout } from '../utils/logout';
+import {showContainer, hideContainer } from '../utils/userInfo';
 
-button.addEventListener('click', logut);
+button.addEventListener('click', logout);
+
+window.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('user__information') ||
+    e.target.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.classList.contains('user__name')
+  ) {
+    showContainer();
+  } else {
+    hideContainer();
+  }
+});
 
 account.saveSettings.addEventListener('click', async (e) => {
   e.preventDefault();

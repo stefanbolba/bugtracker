@@ -10,10 +10,27 @@ import {
 import { Settings } from './models/ModalOptions';
 import { renderMenu, addActiveFromParams, addArrow } from './views/searchView';
 import { addChecked } from './views/modalView';
-import { button, logut } from '../utils/logout';
+import { button, logout } from '../utils/logout';
+import {showContainer, hideContainer } from '../utils/userInfo';
+
 const state = {};
 
-button.addEventListener('click', logut);
+button.addEventListener('click', logout);
+
+window.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('user__information') ||
+    e.target.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.classList.contains('user__name')
+  ) {
+    showContainer();    
+  } else {
+    hideContainer();
+  }
+});
 
 filter.statusList.forEach((el) => {
   el.addEventListener('click', () => {
@@ -130,5 +147,3 @@ window.addEventListener('load', () => {
   addArrow();
   addChecked(state.modalOptions.limit, state.modalOptions.fields);
 });
-
-

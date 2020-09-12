@@ -4,8 +4,28 @@ import { createPreview, hidePreview } from './views/previewView';
 
 import { addIssue, addCategory, addVersion } from './models/Post';
 import { button, logut } from '../utils/logout';
+import {showContainer, hideContainer } from '../utils/userInfo';
 
 button.addEventListener('click', logut);
+
+window.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('user__information') ||
+    e.target.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.classList.contains('user__name')
+  ) {
+    showContainer();
+  } else {
+    hideContainer();
+  }
+});
 
 //Add Issue to the database
 elements.addButton.forEach((el) =>

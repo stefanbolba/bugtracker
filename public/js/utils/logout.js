@@ -3,7 +3,7 @@ import { showAlert } from './alert';
 
 export const button = document.querySelector('.logout');
 
-export const logut = async () => {
+export const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
@@ -15,6 +15,6 @@ export const logut = async () => {
       document.location.replace(`/login`);
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);    
+    showAlert('error', err.response.data.message);
   }
 };

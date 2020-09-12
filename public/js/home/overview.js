@@ -7,11 +7,31 @@ import { postComment, updateState } from './models/PostComment';
 import * as TimelineView from './views/timelineView';
 import { pieChart, graph } from './views/chartsView';
 
-import { button, logut } from '../utils/logout';
+import { button, logout } from '../utils/logout';
+import {showContainer, hideContainer } from '../utils/userInfo';
 
 const state = {};
 
-button.addEventListener('click', logut);
+button.addEventListener('click', logout);
+
+window.addEventListener('mouseover', (e) => {
+  if (
+    e.target.classList.contains('user__information') ||
+    e.target.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.classList.contains('user__information') ||
+    e.target.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains(
+      'user__information'
+    ) ||
+    e.target.classList.contains('user__name')
+  ) {
+    showContainer();
+  } else {
+    hideContainer();
+  }
+});
 
 window.addEventListener('load', async (el) => {
   try {

@@ -1,9 +1,30 @@
 .main__menu
-    ul.menu
-        li(class="user__menu"): a(class=`link user__name ${title.includes('Account') ? 'active' : ''}`) Hello #{user.name}
-                a(href="/me" class="user__links") User Info
-                a(href="#" class="user__links logout") Log Out
+    .hamburger__menu
+        img(src='./img/hamburger-menu.png' class='hamburger__menu--img')
+    ul.menu        
+        li(class="user__menu"): a(class=`link user__name ${title.includes('Account') ? 'active' : ''}`) Hello #{user.name}              
         li: a(href="/" class=`link ${title === 'Home Page' ? 'active' : ''}`) Home
         li: a(href="/addissue" class=`link ${title === 'Add Issue Page' ? 'active' : ''}`) Add Issue
         li: a(href="/issues" class=`link ${title === 'Find Issues Page' ? 'active' : ''}`) Issues
         //- li: a(href="/users" class=`link ${title === 'User List' ? 'active' : ''}`) User List
+
+.user__information
+    .user__info--container
+        .user__photo
+            img.user__photo--details(src=`/img/users/${user.photo}`)
+        .user__details
+            .details__group
+                p Name:
+                p #{user.name}
+            .details__group
+                p Email:
+                p #{user.email}
+            .details__group
+                p Role:
+                p #{user.role}
+            .details__group
+                p Joined On:
+                p= splitDate(user.createdAt)
+    .user__info--options
+        a.user__info--expand(href='/me') Change
+        a.logout(href='#') Log Out

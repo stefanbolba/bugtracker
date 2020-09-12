@@ -19,6 +19,7 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   res.status(200).render('overview', {
     title: 'Home Page',
     issues,
+    splitDate,
   });
 });
 
@@ -52,6 +53,7 @@ exports.getAddIssue = catchAsync(async (req, res, next) => {
     users,
     category,
     version,
+    splitDate,
   });
 });
 
@@ -102,6 +104,7 @@ exports.getIssueById = catchAsync(async (req, res, next) => {
 exports.getMe = (req, res, next) => {
   res.status(200).render('account', {
     title: `${req.user.name} | Account`,
+    splitDate,
   });
 };
 
