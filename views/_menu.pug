@@ -1,6 +1,8 @@
 .main__menu
-    .hamburger__menu
-        img(src='./img/hamburger-menu.png' class='hamburger__menu--img')
+    .hamburger__menu--container
+        button(class='hamburger hamburger--arrow' type='button')
+            span.hamburger-box
+                span.hamburger-inner
     ul.menu        
         li(class="user__menu"): a(class=`link user__name ${title.includes('Account') ? 'active' : ''}`) Hello #{user.name}              
         li: a(href="/" class=`link ${title === 'Home Page' ? 'active' : ''}`) Home

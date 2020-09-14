@@ -8,7 +8,7 @@ import * as TimelineView from './views/timelineView';
 import { pieChart, graph } from './views/chartsView';
 
 import { button, logout } from '../utils/logout';
-import {showContainer, hideContainer } from '../utils/userInfo';
+import * as MenuElm from '../utils/userInfo';
 
 const state = {};
 
@@ -27,11 +27,39 @@ window.addEventListener('mouseover', (e) => {
     ) ||
     e.target.classList.contains('user__name')
   ) {
-    showContainer();
+    MenuElm.showContainer();
   } else {
-    hideContainer();
+    MenuElm.hideContainer();
+  }
+
+  if (!MenuElm.mainMenu.classList.contains('small')) {
+    if (
+      e.target.classList.contains('hamburger__menu--container') ||
+      e.target.classList.contains('hamburger') ||
+      e.target.classList.contains('hamburger-box') ||
+      e.target.classList.contains('hamburger-inner')
+    ) {
+      MenuElm.addLeftArrow();
+      MenuElm.removeRightArrow();
+    } else {
+      MenuElm.removeLeftArrow();
+    }
+  } else if (MenuElm.mainMenu.classList.contains('small')) {
+    if (
+      e.target.classList.contains('hamburger__menu--container') ||
+      e.target.classList.contains('hamburger') ||
+      e.target.classList.contains('hamburger-box') ||
+      e.target.classList.contains('hamburger-inner')
+    ) {
+      MenuElm.addRightArrow();
+      MenuElm.removeLeftArrow();
+    } else {
+      MenuElm.removeRightArrow();
+    }
   }
 });
+
+MenuElm.burgerBtn.addEventListener('click', MenuElm.mainMenuAnimation);
 
 window.addEventListener('load', async (el) => {
   try {
