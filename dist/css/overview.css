@@ -515,17 +515,19 @@ body {
 }
 
 /* USER CONTAINER INFO */
+.user__menu:hover .user__information {display: flex;}
 .user__information {
   position: fixed;
-  display: none;
+  display: flex;
   flex-direction: column;
   z-index: 999;
   background-color: #f0f0f0;
   margin-left: 200px;
-  margin-top: 43px;
+  margin-top: 0px;
   border-radius: 0px 10px 10px 0px;
-  border: 2px solid #c5c5c5;
+  border: 1px solid #c5c5c5;
   border-left: none;
+  box-shadow: 5px 10px 10px #808080;
 }
 
 .user__info--container {
@@ -674,4 +676,27 @@ body {
 
 .hamburger--arrow.right .hamburger-inner::after {
   transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+/* Menu Sprites and images */
+/* .home__sprite {
+  width: 24px;
+  height: 24px;
+  background: url("img/sprites/home-white.png") no-repeat;
+  display: inline-block;
+}
+.home__sprite:hover {
+  background: url("img/sprites/home-color.png") no-repeat;
+} */
+
+.user__sprite, .addIssue__sprite, .home__sprite, .issues__sprite {
+  width: 35px;
+  height: 35px; 
+  /* background: url("/img/sprites/add-white.png") no-repeat; */
+  background-size: 35px 35px;
+  display: inline-block;
+}
+.link {
+  display: flex;
+  align-items: center;
 }

@@ -169,6 +169,7 @@ footer {
 }
 
 /* USER CONTAINER INFO */
+.user__menu:hover .user__information {display: flex;}
 .user__information {
   position: fixed;
   display: none;
@@ -176,10 +177,11 @@ footer {
   z-index: 999;
   background-color: #f0f0f0;
   margin-left: 200px;
-  margin-top: 43px;
+  margin-top: 0px;
   border-radius: 0px 10px 10px 0px;
-  border: 2px solid #c5c5c5;
+  border: 1px solid #c5c5c5;
   border-left: none;
+  box-shadow: 5px 10px 10px #808080;
 }
 
 .user__info--container {
@@ -240,14 +242,115 @@ footer {
   color: #4caf93;
   border: 2px solid #4caf93;
 }
-
-.hamburger__menu {
-  display: flex;
-  justify-content: end;
-  padding: 10px 20px 0px 0px;
+.user__photo--details {
+  display: block;
+  background-color: gray;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
-.hamburger__menu--img {
-  width: 50px;
-  height: 30px;
+
+/* HAMBURGER MENU CSS */
+.hamburger__menu--container {
+  display: flex;
+  justify-content: right;
+}
+.hamburger {
+  padding: 15px 15px;
+  display: inline-block;
   cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 1;
+}
+.hamburger.left:hover {
+  opacity: 1;
+}
+.hamburger.left .hamburger-inner,
+.hamburger.left .hamburger-inner::before,
+.hamburger.left .hamburger-inner::after {
+  background-color: #fff;
+}
+
+.hamburger-box {
+  width: 40px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 40px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: '';
+  display: block;
+}
+.hamburger-inner::before {
+  top: -10px;
+}
+.hamburger-inner::after {
+  bottom: -10px;
+}
+.hamburger--arrow.left .hamburger-inner::before {
+  transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+.hamburger--arrow.left .hamburger-inner::after {
+  transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+.hamburger--arrow.right .hamburger-inner::before {
+  transform: translate3d(8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+
+.hamburger--arrow.right .hamburger-inner::after {
+  transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+/* Menu Sprites and images */
+/* .home__sprite {
+  width: 24px;
+  height: 24px;
+  background: url("img/sprites/home-white.png") no-repeat;
+  display: inline-block;
+}
+.home__sprite:hover {
+  background: url("img/sprites/home-color.png") no-repeat;
+} */
+
+.user__sprite, .addIssue__sprite, .home__sprite, .issues__sprite {
+  width: 35px;
+  height: 35px; 
+  /* background: url("/img/sprites/add-white.png") no-repeat; */
+  background-size: 35px 35px;
+  display: inline-block;
+}
+.link {
+  display: flex;
+  align-items: center;
 }

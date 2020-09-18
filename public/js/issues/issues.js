@@ -11,26 +11,55 @@ import { Settings } from './models/ModalOptions';
 import { renderMenu, addActiveFromParams, addArrow } from './views/searchView';
 import { addChecked } from './views/modalView';
 import { button, logout } from '../utils/logout';
-import {showContainer, hideContainer } from '../utils/userInfo';
+import * as MenuElm from '../utils/userInfo';
+import { menuArr, addWhite, addColor, load } from '../utils/menu';
 
 const state = {};
 
-button.addEventListener('click', logout);
-
 window.addEventListener('mouseover', (e) => {
-  if (
-    e.target.classList.contains('user__information') ||
-    e.target.parentNode.classList.contains('user__information') ||
-    e.target.parentNode.parentNode.classList.contains('user__information') ||
-    e.target.parentNode.parentNode.parentNode.classList.contains('user__information') ||
-    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains('user__information') ||
-    e.target.classList.contains('user__name')
-  ) {
-    showContainer();    
-  } else {
-    hideContainer();
+  if (!MenuElm.mainMenu.classList.contains('small')) {
+    if (
+      e.target.classList.contains('hamburger__menu--container') ||
+      e.target.classList.contains('hamburger') ||
+      e.target.classList.contains('hamburger-box') ||
+      e.target.classList.contains('hamburger-inner')
+    ) {
+      MenuElm.addLeftArrow();
+      MenuElm.removeRightArrow();
+    } else {
+      MenuElm.removeLeftArrow();
+    }
+  } else if (MenuElm.mainMenu.classList.contains('small')) {
+    if (
+      e.target.classList.contains('hamburger__menu--container') ||
+      e.target.classList.contains('hamburger') ||
+      e.target.classList.contains('hamburger-box') ||
+      e.target.classList.contains('hamburger-inner')
+    ) {
+      MenuElm.addRightArrow();
+      MenuElm.removeLeftArrow();
+    } else {
+      MenuElm.removeRightArrow();
+    }
   }
 });
+
+MenuElm.burgerBtn.addEventListener('click', MenuElm.mainMenuAnimation);
+
+menuArr.forEach((el) => {
+  el.addEventListener('mouseover', () => {
+    addColor(el);
+  });
+});
+menuArr.forEach((el) =>
+  el.addEventListener('mouseout', () => {
+    addWhite(el);
+  })
+);
+menuArr.forEach((el) => load(el));
+
+button.addEventListener('click', logout);
+
 
 filter.statusList.forEach((el) => {
   el.addEventListener('click', () => {

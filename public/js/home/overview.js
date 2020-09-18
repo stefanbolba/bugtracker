@@ -9,29 +9,13 @@ import { pieChart, graph } from './views/chartsView';
 
 import { button, logout } from '../utils/logout';
 import * as MenuElm from '../utils/userInfo';
+import { menuArr, addWhite, addColor, load } from '../utils/menu';
 
 const state = {};
 
 button.addEventListener('click', logout);
 
 window.addEventListener('mouseover', (e) => {
-  if (
-    e.target.classList.contains('user__information') ||
-    e.target.parentNode.classList.contains('user__information') ||
-    e.target.parentNode.parentNode.classList.contains('user__information') ||
-    e.target.parentNode.parentNode.parentNode.classList.contains(
-      'user__information'
-    ) ||
-    e.target.parentNode.parentNode.parentNode.parentNode.classList.contains(
-      'user__information'
-    ) ||
-    e.target.classList.contains('user__name')
-  ) {
-    MenuElm.showContainer();
-  } else {
-    MenuElm.hideContainer();
-  }
-
   if (!MenuElm.mainMenu.classList.contains('small')) {
     if (
       e.target.classList.contains('hamburger__menu--container') ||
@@ -60,6 +44,18 @@ window.addEventListener('mouseover', (e) => {
 });
 
 MenuElm.burgerBtn.addEventListener('click', MenuElm.mainMenuAnimation);
+
+menuArr.forEach((el) => {
+  el.addEventListener('mouseover', () => {
+    addColor(el);
+  });
+});
+menuArr.forEach((el) =>
+  el.addEventListener('mouseout', () => {
+    addWhite(el);
+  })
+);
+menuArr.forEach((el) => load(el));
 
 window.addEventListener('load', async (el) => {
   try {
