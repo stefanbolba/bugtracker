@@ -254,7 +254,7 @@ footer {
 /* HAMBURGER MENU CSS */
 .hamburger__menu--container {
   display: flex;
-  justify-content: right;
+  justify-content: flex-end;
 }
 .hamburger {
   padding: 15px 15px;
